@@ -82,13 +82,6 @@ Jz3 = matmul(Jz2, Jz)
 
 #print(sp.linalg.ishermitian(Jyz), sp.linalg.ishermitian(Jzx), sp.linalg.ishermitian(Jxy))
 
-Jy2z2 = Jy2 - Jz2
-Jz2x2 = Jz2 - Jx2
-Jx2y2 = Jx2 - Jy2
-Jxy2z2 = 0.5*(matmul(Jx, Jy2z2) + matmul(Jy2z2, Jx))
-Jyz2x2 = 0.5*(matmul(Jy, Jz2x2) + matmul(Jz2x2, Jy))
-Jzx2y2 = 0.5*(matmul(Jz, Jx2y2) + matmul(Jx2y2, Jz))
-
 def get_material_parameters(mat):
     for row in parameters:
         if row["Material"] == mat:
