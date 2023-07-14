@@ -30,23 +30,20 @@ EH = 1e3*physical_constants["Hartree energy in eV"][0]
 
 muB = 1e3*physical_constants["Bohr magneton in eV/T"][0]
 
-# magnetic flux e/h in Tesla.nm^2
+# magnetic flux h/e in Tesla.nm^2
 
 phi0 = 2e18*physical_constants["mag. flux quantum"][0]
 
-##
+#
 
-mu = 0.5*EH*a0**2
+mu = 0.5 * EH * a0**2
 
-#consts = { "a0": a0, "EH": EH, "muB": muB, "phi0": phi0, "mu": mu}
-#print(consts)
-
-####
+#
 
 sqrt2 = np.sqrt(2)
 sqrt3 = np.sqrt(3)
 
-# Define spin-3/2 matrices
+# Spin-3/2 matrices:
 
 id4 = np.identity(4)
 
@@ -68,8 +65,6 @@ Jz = np.array(
      [0, 0, -1/2, 0], 
      [0, 0, 0, -3/2]])
 
-#print(matmul(Jx, Jy) - matmul(Jy, Jx))
-
 Jyz = 0.5*(matmul(Jy, Jz) + matmul(Jz, Jy))
 Jzx = 0.5*(matmul(Jz, Jx) + matmul(Jx, Jz))
 Jxy = 0.5*(matmul(Jx, Jy) + matmul(Jy, Jx))
@@ -79,8 +74,6 @@ Jz2 = matmul(Jz, Jz)
 Jx3 = matmul(Jx2, Jx)
 Jy3 = matmul(Jy2, Jy)
 Jz3 = matmul(Jz2, Jz)
-
-#print(sp.linalg.ishermitian(Jyz), sp.linalg.ishermitian(Jzx), sp.linalg.ishermitian(Jxy))
 
 def get_material_parameters(mat):
     for row in parameters:
@@ -142,11 +135,11 @@ def compute_eigenvalues(syst, F, N=8):
 
 def get_ga(mat_params, lat_params, a, F):
     if a == 'x':
-    	B = [0.01, 0.0, 0.0]
+        B = [0.01, 0.0, 0.0]
     elif a == 'y':
-    	B = [0.0, 0.01, 0.0]
+        B = [0.0, 0.01, 0.0]
     elif a == 'z':
-    	B = [0.0, 0.0, 0.01]
+        B = [0.0, 0.0, 0.01]
     syst = make_box_LK(mat_params, lat_params, B)
     evals = compute_eigenvalues(syst, F)
     g = (evals[1] - evals[0])/(muB*np.linalg.norm(B))
