@@ -1,6 +1,6 @@
-The script quantum_box_LK.py allows to construct and diagonalize the Luttinger Kohn Hamiltonian for a confined hole (J=3/2). The definition of the model in the continuum can be found for example in C. Kloeffel et al., Physical Review B 97, 235422 (2018).
+The script quantum_box_LK.py allows to construct and diagonalize the Luttinger Kohn Hamiltonian for a confined hole (j=3/2). The definition of the model in the continuum can be found for example in C. Kloeffel et al., Physical Review B 97, 235422 (2018).
 
-The corresponding discretized model is built using kwant tight-binding open-source software (https://kwant-project.org/). 
+The corresponding discretized model is built using kwant tight-binding open-source software (https://kwant-project.org/).
 
 Coupling with the magnetic field orbital contribution (vector potential term) is included at first order in the vector potential, with the gauge specified in the script. 
 
